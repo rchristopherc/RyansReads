@@ -39,7 +39,7 @@ while run != "quit":
         new_book.main()
 
     elif run == "2":   # Search for a book
-        choice = input("Input 1 to search by author, 2 to search by title, or 3 to quit: ")
+        choice = input("Input 1 to search by author, 2 to search by title, or 3 to go back: ")
 
         if choice == "1":
             name = input("Author name: ")
@@ -48,33 +48,39 @@ while run != "quit":
         elif choice == "2":
             name = input("Book name (or part of book name): ")
             print(f"Books found: {find_book.get_book_title(name)}")
+        
+        elif choice not in "123":
+            print("Please enter a valid choice")
 
     elif run == "3":   # display information on a book and choose to edit it
 
         title = input("Input title of book to display information on: ")
         book_info = find_book.book_info(title)
 
-        book = Books(book_info[0], book_info[1], book_info[2], book_info[3], book_info[4], book_info[5])
+        try:
+            book = Books(book_info[0], book_info[1], book_info[2], book_info[3], book_info[4], book_info[5])
 
-        print(f"\nTitle: {book.title}")
-        print(f"Author: {book.author}")
-        print(f"Number in series: {book.number}")
-        print(f"Number of pages: {book.total_pages}")
-        print(f"Currently on page {book.current_page} ({100 * (int(book.current_page) / int(book.total_pages)):.2f}% progress)")
-        print(f"Finished reading?: {book.completed}")
+            print(f"\nTitle: {book.title}")
+            print(f"Author: {book.author}")
+            print(f"Number in series: {book.number}")
+            print(f"Number of pages: {book.total_pages}")
+            print(f"Currently on page {book.current_page} ({100 * (int(book.current_page) / int(book.total_pages)):.2f}% progress)")
+            print(f"Finished reading?: {book.completed}")
 
-        choice = input("\nWould you like to any of this information? (Y/N): ").upper()
-        if choice == "Y":
-            edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
-                                "number of pages (4), current page (5), completed status (6)]: ")
+            choice = input("\nWould you like to any of this information? (Y/N): ").upper()
+            if choice == "Y":
+                edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
+                                    "number of pages (4), current page (5), completed status (6)]: ")
 
-            edit_choices_dict = {   # provide index for choice to edit
-                "1": 0,
-                "2": 1,
-                "3": 2,
-                "4": 3,
-                "5": 4,
-                "6": 5
-            }
+                edit_choices_dict = {   # provide index for choice to edit
+                    "1": 0,
+                    "2": 1,
+                    "3": 2,
+                    "4": 3,
+                    "5": 4,
+                    "6": 5
+                }
 
-            find_book.book_edit(book.title, edit_choice, edit_choices_dict[edit_choice])
+                find_book.book_edit(book.title, edit_choice, edit_choices_dict[edit_choice])
+        except Exception:   # TODO consider making this error more specific
+            print("ERROR An error occurred")

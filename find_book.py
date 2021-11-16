@@ -9,14 +9,22 @@ import csv
 def get_book_title(book_name):
     found_books = []
 
-    with open("Books.csv", "r") as csvfile:
-        reader = csv.reader(csvfile)
+    try:
+        with open("Books.csv", "r") as csvfile:
+            reader = csv.reader(csvfile)
 
-        next(reader)
-        for row in reader:
-            if book_name in row[0]:
-                found_books.append(row[0])
-    return ", ".join(found_books)
+            next(reader)
+            for row in reader:
+                if book_name in row[0]:
+                    found_books.append(row[0])
+        
+        if found_books == False:
+            return "No books found"
+        else:
+            return ", ".join(found_books)
+
+    except FileNotFoundError:
+        return "ERROR You have not entered any books"
 
 
 # find book by its author
@@ -24,27 +32,37 @@ def get_book_author(author_name):
     found_books = []
     author_name = author_name.title()
 
-    with open("Books.csv", "r") as csvfile:
-        reader = csv.reader(csvfile)
+    try:
+        with open("Books.csv", "r") as csvfile:
+            reader = csv.reader(csvfile)
 
-        next(reader)
-        for row in reader:
-            if author_name in row[1]:
-                found_books.append(row[0])
-    return ", ".join(found_books)
+            next(reader)
+            for row in reader:
+                if author_name in row[1]:
+                    found_books.append(row[0])
 
+        if found_books == False:
+            return "No books found"
+        else:
+            return ", ".join(found_books)
+
+    except FileNotFoundError:
+        return "ERROR You have not entered any books"
 
 # get a book and return it to RyanReads.py
 def book_info(book_title):
-    with open("Books.csv", "r") as csvfile:
-        reader = csv.reader(csvfile)
-        book_title = book_title.title()
+    try:
+        with open("Books.csv", "r") as csvfile:
+            reader = csv.reader(csvfile)
+            book_title = book_title.title()
 
-        next(reader)
-        for row in reader:
-            if book_title in row[0]:
-                return row
+            next(reader)
+            for row in reader:
+                if book_title in row[0]:
+                    return row
 
+    except FileNotFoundError:
+        print("ERROR You have not entered any books")
 
 # edit information on a book in Books.csv
 def book_edit(book, edit_choice, edit_index):
