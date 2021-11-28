@@ -35,8 +35,7 @@ def main():
     while run != "quit":
         print("\n=======================================================")
         print('\nInput 1 to add a new book\nInput 2 to find a book\nInput 3 to obtain available information/edit an entered'
-            ' book (must enter title exactly)\nInput "quit" to quit')
-        print("\n=======================================================\n")
+            ' book (must enter title exactly)\nInput "quit" to quit\n')
 
         run = input("Input: ").lower()
 
@@ -75,7 +74,7 @@ def main():
                 choice = input("\nWould you like to edit any of this information? (Y/N): ").upper()
                 if choice == "Y":
                     edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
-                                        "number of pages (4), current page (5), completed status (6)]: ")
+                                        "number of pages (4), current page (5), completed status (6), delete book (7)]: ")
 
                     edit_choices_dict = {   # provide index for choice to edit
                         "1": 0,
@@ -83,14 +82,15 @@ def main():
                         "3": 2,
                         "4": 3,
                         "5": 4,
-                        "6": 5
+                        "6": 5,
+                        "7": 6,
                     }
 
                     find_book.book_edit(book.title, edit_choice, edit_choices_dict[edit_choice])
             except Exception:   # TODO consider making this error more specific
                 print("ERROR An error occurred")
 
-    close_input = input("Press enter to close: ")
+    print("\n=======================================================\n")
 
 
 if __name__ == '__main__':

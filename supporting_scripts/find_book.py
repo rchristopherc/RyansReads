@@ -66,17 +66,30 @@ def book_info(book_title):
 
 # edit information on a book in Books.csv
 def book_edit(book, edit_choice, edit_index):
-    new_text = input(f"New input for {edit_choice}: ")
     temp_file = []
 
-    with open("Books.csv", "r") as f_in:
-        reader = csv.reader(f_in)
+    if edit_choice != "7":
+        new_text = input(f"New input for {edit_choice}: ")
+        with open("Books.csv", "r") as f_in:
+            reader = csv.reader(f_in)
 
-        for row in reader:
-            if row[0] == book:
-                row[edit_index] = new_text
-            temp_file.append(row)
+            for row in reader:
+                if row[0] == book:
+                    row[edit_index] = new_text
+                temp_file.append(row)
 
-    with open("Books.csv", "w", newline="") as f_out:
-        writer = csv.writer(f_out)
-        writer.writerows(temp_file)
+        with open("Books.csv", "w", newline="") as f_out:
+            writer = csv.writer(f_out)
+            writer.writerows(temp_file)
+    else:
+        print(book)
+        with open("Books.csv", "r") as f_in:
+            reader = csv.reader(f_in)
+            for row in reader:
+                if row[0] != book:
+                    temp_file.append(row)
+                    
+        with open("Books.csv", "w", newline="") as f_out:
+            writer = csv.writer(f_out)
+            for row in temp_file:
+                writer.writerow(row)
