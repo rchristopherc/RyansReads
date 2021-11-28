@@ -72,7 +72,7 @@ def main():
                 print(f"Currently on page {book.current_page} ({100 * (int(book.current_page) / int(book.total_pages)):.2f}% progress)")
                 print(f"Finished reading?: {book.completed}")
 
-                choice = input("\nWould you like to any of this information? (Y/N): ").upper()
+                choice = input("\nWould you like to edit any of this information? (Y/N): ").upper()
                 if choice == "Y":
                     edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
                                         "number of pages (4), current page (5), completed status (6)]: ")
