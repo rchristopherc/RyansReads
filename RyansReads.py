@@ -34,14 +34,14 @@ def main():
     run = ""
     while run != "quit":
         print("\n=======================================================")
-        print('\nInput 1 to add a new book\nInput 2 to find a book\nInput 3 to obtain available information/edit an entered'
+        print('\nInput 1 to add a new book\nInput 2 to get a list of matching books\nInput 3 to obtain available information/edit an entered'
             ' book (must enter title exactly)\nInput "quit" to quit\n')
 
         run = input("Input: ").lower()
 
         if run == "1":   # Add a new book
             new_book.main()
-
+            print("\n=======================================================\n")
         elif run == "2":   # Search for a book
             choice = input("Input 1 to search by author, 2 to search by title, or 3 to go back: ")
 
@@ -56,6 +56,7 @@ def main():
             elif choice not in "123":
                 print("Please enter a valid choice")
 
+            print("\n=======================================================\n")
         elif run == "3":   # display information on a book and choose to edit it
 
             title = input("Input title of book to display information on: ")
@@ -90,7 +91,8 @@ def main():
             except Exception:   # TODO consider making this error more specific
                 print("ERROR An error occurred")
 
-    print("\n=======================================================\n")
+            print("\n=======================================================\n")
+    
 
 
 if __name__ == '__main__':
