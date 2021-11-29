@@ -77,8 +77,8 @@ def main():
                 choice = input("\nWould you like to edit any of this information? (Y/N): ").upper()
                 if choice == "Y":
                     edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
-                                        "number of pages (4), current page (5), completed status (6), delete book (7)]: ")  # TODO 7 deletes all books with same name
-
+                                        "number of pages (4), current page (5), completed status (6), delete book (7)]: ")
+                    """You can't choose which book you want to edit if they share a name, might fix that if I can"""
                     edit_choices_dict = {   # provide index for choice to edit
                         "1": 0,
                         "2": 1,
@@ -90,18 +90,11 @@ def main():
                     }
 
                     find_book.book_edit(book.title, edit_choice, edit_choices_dict[edit_choice])
-            except Exception:   # TODO consider making this error more specific
+            except Exception:   # TODO consider making this error more specific -> nah
                 print("ERROR An error occurred")
 
             print("\n=======================================================\n")
     
-
-"""
-TODO:
-- Make it so if person is on last page, completed automatically "Y"
-"""
-
-
 
 if __name__ == '__main__':
     main()
