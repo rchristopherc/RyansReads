@@ -34,7 +34,6 @@ def main():
     run = ""
     while run != "quit":
         print("\n=======================================================")
-        improved_lists
         print('\nInput 1 to add a new book\nInput 2 to get a list of books\nInput 3 to obtain available information/edit an entered'
             ' book (must enter title exactly)\nInput "quit" to quit\n')
 
