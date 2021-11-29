@@ -6,7 +6,7 @@ import csv
 
 
 # Find book by its title
-def get_book_title(book_name):
+def get_uncompleted_books():
     found_books = []
 
     try:
@@ -15,10 +15,10 @@ def get_book_title(book_name):
 
             next(reader)
             for row in reader:
-                if book_name in row[0]:
+                if row[5] != "Y" or row[4] <= row[3]:   # if marked finished or read pages == total pages
                     found_books.append(row[0])
-        
-        if found_books == False:
+
+        if found_books == []:
             return "No books found"
         else:
             return ", ".join(found_books)
@@ -27,6 +27,27 @@ def get_book_title(book_name):
         return "ERROR You have not entered any books"
 
 
+def get_completed_books():
+    found_books = []
+
+    try:
+        with open("Books.csv", "r") as csvfile:
+            reader = csv.reader(csvfile)
+
+            next(reader)
+            for row in reader:
+                if row[5] == "Y" or row[4] == row[3]:   # if marked finished or read pages == total pages
+                    found_books.append(row[0])
+
+        if found_books == []:
+            return "No books found"
+        else:
+            return ", ".join(found_books)
+
+    except FileNotFoundError:
+        return "ERROR You have not entered any books"
+    
+    
 # find book by its author
 def get_book_author(author_name):
     found_books = []
