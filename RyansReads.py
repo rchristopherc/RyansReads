@@ -34,7 +34,8 @@ def main():
     run = ""
     while run != "quit":
         print("\n=======================================================")
-        print('\nInput 1 to add a new book\nInput 2 to get a list of matching books\nInput 3 to obtain available information/edit an entered'
+        improved_lists
+        print('\nInput 1 to add a new book\nInput 2 to get a list of books\nInput 3 to obtain available information/edit an entered'
             ' book (must enter title exactly)\nInput "quit" to quit\n')
 
         run = input("Input: ").lower()
@@ -43,15 +44,17 @@ def main():
             new_book.main()
             print("\n=======================================================\n")
         elif run == "2":   # Search for a book
-            choice = input("Input 1 to search by author, 2 to search by title, or 3 to go back: ")
+            choice = input("Input 1 to list by author, 2 to list by uncompleted books, 3 to list by completed books, or 'quit' to quit: ")
 
             if choice == "1":
                 name = input("Author name: ")
                 print(f"Books found: {find_book.get_book_author(name)}")
 
             elif choice == "2":
-                name = input("Book name (or part of book name): ")
-                print(f"Books found: {find_book.get_book_title(name)}")
+                print(f"Finished books found: {find_book.get_uncompleted_books()}")
+            
+            elif choice == "3":
+                print(f"Finished books found: {find_book.get_completed_books()}")
             
             elif choice not in "123":
                 print("Please enter a valid choice")
@@ -75,7 +78,7 @@ def main():
                 choice = input("\nWould you like to edit any of this information? (Y/N): ").upper()
                 if choice == "Y":
                     edit_choice = input("What would you like to edit? [title (1), author (2), book number in series (3), total "
-                                        "number of pages (4), current page (5), completed status (6), delete book (7)]: ")
+                                        "number of pages (4), current page (5), completed status (6), delete book (7)]: ")  # TODO 7 deletes all books with same name
 
                     edit_choices_dict = {   # provide index for choice to edit
                         "1": 0,
@@ -93,6 +96,14 @@ def main():
 
             print("\n=======================================================\n")
     
+
+"""
+TODO:
+- Make it so if person is on last page, completed automatically "Y"
+- Allow users to list by author
+- Allow users to list by books completed/not completed
+"""
+
 
 
 if __name__ == '__main__':
