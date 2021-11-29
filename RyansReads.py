@@ -99,8 +99,6 @@ def main():
 """
 TODO:
 - Make it so if person is on last page, completed automatically "Y"
-- Allow users to list by author
-- Allow users to list by books completed/not completed
 """
 
 

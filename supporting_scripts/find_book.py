@@ -85,6 +85,7 @@ def book_info(book_title):
     except FileNotFoundError:
         print("ERROR You have not entered any books")
 
+
 # edit information on a book in Books.csv
 def book_edit(book, edit_choice, edit_index):
     temp_file = []
@@ -103,13 +104,15 @@ def book_edit(book, edit_choice, edit_index):
             writer = csv.writer(f_out)
             writer.writerows(temp_file)
     else:
-        print(book)
+        deleted = False
         with open("Books.csv", "r") as f_in:
             reader = csv.reader(f_in)
             for row in reader:
-                if row[0] != book:
+                if row[0] == book and deleted != True:
+                    deleted = True
+                else:
                     temp_file.append(row)
-                    
+            
         with open("Books.csv", "w", newline="") as f_out:
             writer = csv.writer(f_out)
             for row in temp_file:
