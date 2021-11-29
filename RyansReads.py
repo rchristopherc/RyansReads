@@ -99,3 +99,6 @@ def main():
 if __name__ == '__main__':
     main()
     
+# TODO Use timestamps from time to determine rate at which user is reading, and return an estimate of how many hours they have left until they finish.
+# - SQL structured query language. 
+# - ORM works in conjunction with a data layer (.csv, sql, sqlite) -> basically simplifies code
