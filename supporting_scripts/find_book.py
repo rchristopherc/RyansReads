@@ -10,7 +10,7 @@ def get_uncompleted_books():
     found_books = []
 
     try:
-        with open("Books.csv", "r") as csvfile:
+        with open("Books.csv", "r", encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
 
             next(reader)
@@ -31,7 +31,7 @@ def get_completed_books():
     found_books = []
 
     try:
-        with open("Books.csv", "r") as csvfile:
+        with open("Books.csv", "r", encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
 
             next(reader)
@@ -54,7 +54,7 @@ def get_book_author(author_name):
     author_name = author_name.title()
 
     try:
-        with open("Books.csv", "r") as csvfile:
+        with open("Books.csv", "r", encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
 
             next(reader)
@@ -73,7 +73,7 @@ def get_book_author(author_name):
 # get a book and return it to RyanReads.py
 def book_info(book_title):
     try:
-        with open("Books.csv", "r") as csvfile:
+        with open("Books.csv", "r", encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
             book_title = book_title.title()
 
@@ -100,12 +100,12 @@ def book_edit(book, edit_choice, edit_index):
                     row[edit_index] = new_text
                 temp_file.append(row)
 
-        with open("Books.csv", "w", newline="") as f_out:
+        with open("Books.csv", "w", newline="", encoding="utf-8") as f_out:
             writer = csv.writer(f_out)
             writer.writerows(temp_file)
     else:
         deleted = False
-        with open("Books.csv", "r") as f_in:
+        with open("Books.csv", "r", encoding="utf-8") as f_in:
             reader = csv.reader(f_in)
             for row in reader:
                 if row[0] == book and deleted != True:
@@ -113,7 +113,7 @@ def book_edit(book, edit_choice, edit_index):
                 else:
                     temp_file.append(row)
             
-        with open("Books.csv", "w", newline="") as f_out:
+        with open("Books.csv", "w", newline="", encoding="utf-8") as f_out:
             writer = csv.writer(f_out)
             for row in temp_file:
                 writer.writerow(row)

@@ -3,7 +3,7 @@ This script is used to create Books.csv (if it does not already exist) and enter
 """
 
 
-from os.path import exists
+from os.path import exists  # check to see if file exists
 import csv
 
 
@@ -43,11 +43,11 @@ def main():
 
     # Write to csv
     if exists("Books.csv"):
-        with open("Books.csv", "a", newline="") as csvfile:
+        with open("Books.csv", "a", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([book_title, book_author, book_number, total_pages, current_page, book_status])
     else:
-        with open("Books.csv", "w", newline="") as csvfile:
+        with open("Books.csv", "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Title", "Author", "Book Number", "Total Pages", "Current Page", "Completed"])
             writer.writerow([book_title, book_author, book_number, total_pages, current_page, book_status])
