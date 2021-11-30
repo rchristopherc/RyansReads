@@ -1,4 +1,6 @@
-
+#  Ryan Cutrone
+#  CSCI 101-C
+#  Create Project: Ryan's Reads
 
 from supporting_scripts import new_book
 from supporting_scripts import find_book
