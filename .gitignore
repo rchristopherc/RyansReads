@@ -2,3 +2,6 @@
 *.csv
 *.pyc
 *.vscode
+/.vs/slnx.sqlite
+
+*.json
