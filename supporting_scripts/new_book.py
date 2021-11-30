@@ -39,7 +39,13 @@ def main():
         else:
             is_int = True
 
-    book_status = input("Have you finished this book? (Y/N): ").upper()
+    is_valid = False
+    while not is_valid:
+        book_status = input("Have you finished this book? (Y/N): ").upper()
+        if book_status == "Y" or book_status == "N":
+            is_valid = True
+        else:
+            print('Valid inputs: Y/N')
 
     # Write to csv
     if exists("Books.csv"):
