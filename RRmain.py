@@ -95,10 +95,16 @@ def main():
 
             print("\n=======================================================\n")
     
+def add_book():
+    new_book.main()
+    
+    
 
 if __name__ == '__main__':
     main()
     
+
 # TODO Use timestamps from time to determine rate at which user is reading, and return an estimate of how many hours they have left until they finish.
 # - SQL structured query language, could use SQLite. 
 # - ORM works in conjunction with a data layer (.csv, sql, sqlite) -> basically simplifies code
+# GET ALL BOOKS YOU MORON
