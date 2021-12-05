@@ -9,7 +9,7 @@ def get_all_books():
     found_books = []
     
     try:
-        with open("Books.csv", "r") as csvfile:
+        with open(r"Books.csv", "r") as csvfile:
             reader = csv.reader(csvfile)
             
             next(reader)  # header
@@ -17,12 +17,12 @@ def get_all_books():
                 found_books.append(row[0])
 
         if found_books == []:
-            return "No books found"
+            print("No books found")
         else:
-            return ", ".join(found_books)
+            print("Books found:",", ".join(found_books))
     
     except FileNotFoundError:
-        return "ERROR You have not found any books"
+        print("ERROR You have not entered any books")
     
     
 # Find book by its title
@@ -35,12 +35,13 @@ def get_uncompleted_books():
 
             next(reader)
             for row in reader:
-                if row[5] != "Y" or row[4] <= row[3]:   # if marked finished or read pages == total pages
+                if row[5] !="Y" and row[4] < row[3]:   # if marked finished or read pages == total pages
                     found_books.append(row[0])
 
         if found_books == []:
             return "No books found"
         else:
+            print(", ".join(found_books))
             return ", ".join(found_books)
 
     except FileNotFoundError:
@@ -88,6 +89,7 @@ def get_book_author(author_name):
             return ", ".join(found_books)
 
     except FileNotFoundError:
+        print("ERROR You have not entered any books")
         return "ERROR You have not entered any books"
 
 # get a book and return it to RyanReads.py
