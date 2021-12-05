@@ -26,10 +26,12 @@ def add_book_command(): # call RRmain.add_book
     author_list = tk.Button(add_book_screen, text="Get a list by author name", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=find_book.get_book_author)
     uncompleted_list = tk.Button(add_book_screen, text="Get a list by uncompleted books", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=find_book.get_uncompleted_books)
     completed_list = tk.Button(add_book_screen, text="Get a list by completed books", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=find_book.get_completed_books)
+    all_books = tk.Button(add_book_screen, text="Get a list by completed books", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=find_book.get_all_books)
 
     author_list.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15)
-    uncompleted_list.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15, rely=0.4)
-    completed_list.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15, rely=.8)
+    uncompleted_list.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15, rely=0.26)
+    completed_list.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15, rely=.53)
+    all_books.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15, rely=.8)
 
 
 # HOMESCREEN

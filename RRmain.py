@@ -95,10 +95,6 @@ def main():
 
             print("\n=======================================================\n")
     
-def add_book():
-    new_book.main()
-    
-    
 
 if __name__ == '__main__':
     main()
