@@ -35,7 +35,7 @@ def get_uncompleted_books():
 
             next(reader)
             for row in reader:
-                if row[5] !="Y" and row[4] < row[3]:   # if marked finished or read pages == total pages
+                if row[5] == "N" or row[4] < row[3]:   # if marked finished or read pages == total pages
                     found_books.append(row[0])
 
         if found_books == []:
@@ -83,7 +83,7 @@ def get_book_author(author_name):
                 if author_name in row[1]:
                     found_books.append(row[0])
 
-        if found_books == False:
+        if found_books == []:
             return "No books found"
         else:
             return ", ".join(found_books)
