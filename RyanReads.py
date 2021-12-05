@@ -2,7 +2,6 @@ import tkinter as tk
 import tkinter.font as tkFont
 from supporting_scripts import RRmain
 from supporting_scripts import find_book
-from supporting_scripts import new_book
 
 
 # LIST_BOOK WINDOW
@@ -43,9 +42,12 @@ def title_screen(): # DONE
     root.config(bg="#22223b")
     
     # title
+    subtitle_font = tkFont.Font(size=12)
     title = tk.Label(root, text="Welcome to Ryan's Reads!", font=(16), bg="#22223b", fg="#ffffff")
+    subtitle = tk.Label(root, text="Use the terminal to see complete inputs and see outputs!", font=subtitle_font, bg="#22223b", fg="#ffffff")
     title.pack()
-
+    subtitle.pack()
+    
     # buttons
     home_screen = tk.Frame(root, bg="#23344a")
     home_screen.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.8)
