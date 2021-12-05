@@ -4,7 +4,27 @@ This script is used any time Books.csv needs to be accessed to read or edit exis
 
 import csv
 
+# get a list of all books
+def get_all_books():
+    found_books = []
+    
+    try:
+        with open("Books.csv", "r") as csvfile:
+            reader = csv.reader(csvfile)
+            
+            next(reader)  # header
+            for row in reader:
+                found_books.append(row[0])
 
+        if found_books == []:
+            return "No books found"
+        else:
+            return ", ".join(found_books)
+    
+    except FileNotFoundError:
+        return "ERROR You have not found any books"
+    
+    
 # Find book by its title
 def get_uncompleted_books():
     found_books = []
