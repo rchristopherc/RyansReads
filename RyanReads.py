@@ -55,7 +55,7 @@ def title_screen(): # DONE
 
     add_book = tk.Button(home_screen, text="Add a new book", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=RRmain.one)
     list_books = tk.Button(home_screen, text="Get a list of books by title or author", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=lambda:[list_book_window(), root.destroy()])
-    edit = tk.Button(home_screen, text="Edit information on an existing book", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=RRmain.three)
+    edit = tk.Button(home_screen, text="Display information on an existing book", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=RRmain.three)
     quit = tk.Button(home_screen, text="Exit", font=bfont, bg="#38502a", activebackground="#393f2d", fg="#ffffff", command=root.destroy)
     
     add_book.place(bordermode="outside", relheight=0.2, relwidth=0.7, relx=0.15)
